@@ -1,0 +1,19 @@
+{
+  "name": "w09_js_project",
+  "version": "1.0.0",
+  "description": "Create a browser game based on an existing card or dice game. Model and test the game logic and then display it in the browser for a user to interact with.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crmcleod/w09_js_project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crmcleod/w09_js_project/issues"
+  },
+  "homepage": "https://github.com/crmcleod/w09_js_project#readme"
+}
