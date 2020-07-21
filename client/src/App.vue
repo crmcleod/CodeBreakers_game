@@ -71,16 +71,16 @@ export default {
     })
 
     eventBus.$on("change", (data) => {
-      this.turn = data.turn
-      this.redScore = data.redScore
-      this.blueScore = data.blueScore
-      this.cards = data.cards
-      this.gameOn = data.gameOn
-      this.team = data.team
-      this.wonGame = data.wonGame
-      this.assassinClicked = data.assassinClicked
-      this.redWins = data.redWins
-      this.blueWins = data.blueWins
+      this.redScore = data.redScore,
+      this.blueScore = data.blueScore,
+      this.turn = data.turn,
+      this.cards = data.cards,
+      this.gameOn = data.gameOn,
+      this.team = data.team,
+      this.wonGame = data.wonGame,
+      this.assassinClicked = data.assassinClicked,
+      this.redWins = data.redWins,
+      this.blueWins = data.blueWins,
       this.round = data.round
     })
 
@@ -112,38 +112,33 @@ export default {
           this.teamAssigned2 = "Team 1 - "
         }
     },
-    
+    clickCardHelper(){
+        this.addVictoryAllCards(this.team)
+        this.saveNewMove();
+        this.saveNewGameStatus();
+        this.wonRound = true;
+    },
     clickCard(card) {
       this.addPointsToRightTeam(card);
       
       if (card.colour === "Black") {
+        this.clickCardHelper();
         this.team = this.turn;
-        this.wonRound = true;
         this.assassinClicked = true;
-        this.addVictoryAssassin(this.team)
-        this.saveNewMove();
-        this.saveNewGameStatus();
-        this.updateForAllPlayers();
         this.wonGame = false;
       } else if (this.redScore === 0 || this.blueScore === 0) {
+        this.clickCardHelper();
         this.team = card.colour;
         this.wonGame = true;
-        this.wonRound = true;
-        this.addVictoryAllCards(this.team)
-        this.saveNewMove();
-        this.saveNewGameStatus();
-        this.updateForAllPlayers();
       }
       else {
         this.checkIfWrongColour(card);
         this.saveNewMove();
-        this.updateForAllPlayers();
       }
-     
       const index = this.cards.indexOf(card);
       this.cards[index].isClicked = true;
-      this.saveNewGameStatus;
-      
+      this.saveNewGameStatus();
+      this.updateForAllPlayers();
     },
 
     updateForAllPlayers(){
@@ -208,11 +203,12 @@ export default {
     },
 
     nextTurn(){
-      
       if(this.turn === "Red") {
         this.turn = "Blue"
+        this.updateForAllPlayers()
       } else {
         this.turn = "Red"
+        this.updateForAllPlayers()
       }
       this.saveNewMove()
     },
