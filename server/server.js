@@ -27,7 +27,9 @@ const createRouter = require('./helpers/create_routers.js');
 app.use(bodyParser.json());
 app.use(cors({credentials: true, origin: "*"}));
 
-MongoClient.connect('mongodb://localhost:27017')
+let password = process.env.password
+
+MongoClient.connect(`mongodb+srv://crmcleod:${password}@cluster0.obgoc.mongodb.net/codebreakers?retryWrites=true&w=majority`, {useUnifiedTopology: true, useNewUrlParser: true})
   .then((player) => {
     const db = player.db('codebreaker');
     const prePlayCardsCollection = db.collection('prePlayCards');
