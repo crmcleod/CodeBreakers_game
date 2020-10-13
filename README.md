@@ -9,13 +9,13 @@ You might use persistence to keep track of the state of the game or track scores
 
 # Screenshots
    ## Table before game is 'unboxed'
-   <img src="./client/public/StartGame.png" width="50%" />
+   <img src="./client/public/StartGame.png" width="75%" />
    
    ## Game in play
-   <img src="./client/public/InGame.png" width="50%" />
+   <img src="./client/public/InGame.png" width="75%" />
 
    ## Game over ☠️
-   <img src="./client/public/GameOver.png" width="50%" />
+   <img src="./client/public/GameOver.png" width="75%" />
 
 
 ## MVP
