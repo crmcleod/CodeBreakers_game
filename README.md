@@ -6,6 +6,18 @@ Write your own MVP with some specific goals to be achieved based on the game you
 
 You might use persistence to keep track of the state of the game or track scores/wins. Other extended features will depend on the game you choose.
 
+
+# Screenshots
+   ## Table before game is 'unboxed'
+   <img src="./client/public/StartGame.png" width="50%" />
+   
+   ## Game in play
+   <img src="./client/public/InGame.png" width="50%" />
+
+   ## Game over ☠️
+   <img src="./client/public/GameOver.png" width="50%" />
+
+
 ## MVP
 
 * Build game mechanics - Turn based
