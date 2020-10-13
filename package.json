@@ -4,8 +4,8 @@
   "description": "Create a browser game based on an existing card or dice game. Model and test the game logic and then display it in the browser for a user to interact with.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "vue-cli-service build"  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/crmcleod/w09_js_project.git"
