@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: '/codebreakers/'
+    publicPath: '/CodeBreakers_game/'
 }
