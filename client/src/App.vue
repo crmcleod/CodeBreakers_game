@@ -127,20 +127,25 @@ export default {
         this.team = this.turn;
         this.assassinClicked = true;
         this.wonGame = false;
+        this.addVictoryAssassin(this.team)
+
       } else if (this.redScore === 0 || this.blueScore === 0) {
         this.clickCardHelper();
         this.team = card.colour;
         this.wonGame = true;
+        this.addVictoryAllCards(this.team)
+
       }
       else {
         this.checkIfWrongColour(card);
         this.saveNewMove();
+        this.addVictoryAllCards(this.team)
+
       }
       const index = this.cards.indexOf(card);
       this.cards[index].isClicked = true;
       this.saveNewGameStatus();
       this.updateForAllPlayers();
-      this.addVictoryAllCards(this.team)
 
     },
 
