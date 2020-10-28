@@ -113,12 +113,13 @@ export default {
         }
     },
     clickCardHelper(){
-        this.addVictoryAllCards(this.team)
         this.saveNewMove();
         this.saveNewGameStatus();
         this.wonRound = true;
     },
+
     clickCard(card) {
+      
       this.addPointsToRightTeam(card);
       
       if (card.colour === "Black") {
@@ -139,6 +140,8 @@ export default {
       this.cards[index].isClicked = true;
       this.saveNewGameStatus();
       this.updateForAllPlayers();
+      this.addVictoryAllCards(this.team)
+
     },
 
     updateForAllPlayers(){
@@ -155,6 +158,7 @@ export default {
         round: this.round,    
         assassinClicked: this.assassinClicked   
       })
+      this.saveNewMove()
     },
 
     endGame(){
@@ -163,7 +167,7 @@ export default {
       this.wonGame = false;
       this.wonRound = false;
       this.gameOn = false;
-      this.saveNewMove();
+      // this.saveNewMove();
       this.saveNewGameStatus();
       this.updateForAllPlayers();
     },
@@ -210,7 +214,7 @@ export default {
         this.turn = "Red"
         this.updateForAllPlayers()
       }
-      this.saveNewMove()
+      // this.saveNewMove()
     },
     
     shuffle(array) {
