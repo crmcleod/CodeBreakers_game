@@ -1,4 +1,4 @@
-{
+{ 
   "name": "w09_js_project",
   "version": "1.0.0",
   "description": "Create a browser game based on an existing card or dice game. Model and test the game logic and then display it in the browser for a user to interact with.",
