@@ -355,7 +355,7 @@ html {
   box-shadow: -5px 7px 62px 16px rgb(211, 29, 29),
     inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
     inset -6px -6px 10px 0 rgba(128, 125, 122, 0.5);
-  border: 1rem solid rgb(60, 60, 60);
+  border: 0.3rem solid rgb(60, 60, 60);
   background-color: rgb(85, 84, 79);
   grid-column: 2/5;
   display: grid;

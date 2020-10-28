@@ -29,7 +29,8 @@ app.use(cors({credentials: true, origin: "*"}));
 
 let password = process.env.password
 
-MongoClient.connect(`mongodb+srv://crmcleod:${password}@cluster0.obgoc.mongodb.net/codebreakers?retryWrites=true&w=majority`, {useUnifiedTopology: true, useNewUrlParser: true})
+// MongoClient.connect(`mongodb+srv://crmcleod:${password}@cluster0.obgoc.mongodb.net/codebreakers?retryWrites=true&w=majority`, {useUnifiedTopology: true, useNewUrlParser: true})
+MongoClient.connect('mongodb://localhost:27017')
   .then((player) => {
     const db = player.db('codebreaker');
     const prePlayCardsCollection = db.collection('prePlayCards');
