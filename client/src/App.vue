@@ -317,7 +317,7 @@ export default {
 @import url(https://fonts.googleapis.com/css?family=Bungee:regular);
 
 html {
-  /* background: url('../public/Codenamestable.png') no-repeat center center fixed; */
+  background: url('../public/Codenamestable.png') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
