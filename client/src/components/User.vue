@@ -32,15 +32,14 @@ export default  {
 <style>
 #spy-guess-button{
     font-family: "Bungee";
-    margin-left: -92.5%;
-    width: 41.4vw;
-    height:4.2vw;
-    font-size: 1.5vw;
+    width: 100%;
+    height: 4.5rem;
+    font-size: 2rem;
     border-style: none;
     border-radius: 12px;
     background-color: rgba(240, 248, 255, 0.438);
     outline: none;
-    margin-top: -2rem;
+    margin-top: 3rem;
     padding-top: 0.2rem;
     cursor: pointer;
 }

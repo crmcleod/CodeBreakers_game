@@ -62,7 +62,7 @@ export default {
     border: 2px solid rgb(177, 8, 8);
     background: linear-gradient(135deg, rgb(194, 73, 73), rgb(177, 8, 8));
     height: 4vw;
-    width: 4vw;
+    width: 3.8vw;
     border-radius: 15%;
     text-align: center;
     padding: 0 important;
@@ -82,7 +82,7 @@ export default {
     color: rgb(105, 105, 105);
     border: 2px solid rgb(22, 94, 107);
     height: 4vw;
-    width: 4vw;
+    width: 3.8vw;
     background: linear-gradient(135deg, rgb(55, 154, 211), rgb(20, 117, 134));
     border-radius: 15%;
     text-align: center;

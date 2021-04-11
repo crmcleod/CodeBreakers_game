@@ -50,13 +50,13 @@ methods: {
 {
     display: block;
     position: relative;
-    top: 50px;
-    left: 50px;
+    top: 2rem;
+    left: 4rem;
   
   z-index: 1;
 }
 #menuToggle input {
-    display: block;
+  display: block;
   width: 40px;
   height: 32px;
   position: absolute;
@@ -111,8 +111,8 @@ methods: {
 {
   transform: rotate(-45deg) translate(0, -1px);
 }
-#menu
-{position: fixed;
+#menu{
+  position: fixed;
   width: 300px;
   margin: -100px 0 0 -50px;
   padding: 50px;
@@ -120,7 +120,7 @@ methods: {
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   transform-origin: 0% 0%;
-  transform: translate(90vw, -2vw);
+  transform: translate(90vw);
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 #menu li{

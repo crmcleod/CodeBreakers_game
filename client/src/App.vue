@@ -3,14 +3,14 @@
     <button id="toggle-game-button" v-on:click="toggleGameState">{{ gameStateText }}</button>
     <menu-button id="menu" :teamAssigned1="teamAssigned1" :teamAssigned2="teamAssigned2" :gameOn="gameOn" :blueWins="blueWins" :redWins="redWins" :round="round" :redScore="redScore" :blueScore="blueScore" :assassinClicked="assassinClicked"></menu-button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></score-bar>
-    <grid class="grid" v-bind:class="{blueTurn:(turn === 'Blue')}" :cards="cards" :gameOn="gameOn" ></grid>
+    <grid class="grid" v-bind:class="{blueTurn:(turn === 'Blue')}" :cards="cards" :gameOn="gameOn"></grid>
     <result-display :team="team" :wonGame="wonGame"></result-display>
     <user id="user-bar" :cards="cards" :gameOn="gameOn"></user>
   </div>
 </template>
 
 <script>
-import {eventBus} from "@/main";
+import { eventBus } from "@/main";
 import Grid from "./components/Grid.vue";
 import ScoreBar from "./components/ScoreBar";
 import CodeBreakerService from "./services/CodebreakerService";
@@ -335,6 +335,7 @@ html {
   background-position-y: bottom;
   background-position-x: left;
   font-size: 16px;
+
 }
 
 #menu{
@@ -342,21 +343,23 @@ html {
 }
 
 #user-bar{
-  padding: 15%;
-  grid-column: 3/5;
-}
-
-#score-bar{
-  margin-top: -3%;
   grid-column: 2/5;
 }
 
-#app {
+#score-bar{
+  /* margin-top: -3%; */
+  grid-column: 2/5;
+  grid-row: 2/3;
+}
+
+#app { 
   font-family: "Rubik";
   font-weight: 700;
   display: grid;
   font-size: 1.05vw;
-  grid-template-columns: 29% 14% 14% 14% 29%;
+  grid-template-columns: 1fr repeat(3, minmax(15vh , 23vh)) 1fr;
+  grid-template-rows: 2rem 7rem 70% 1fr;
+  height: 100vh;
 }
 
 .grid {
@@ -371,6 +374,7 @@ html {
   grid-template-columns: 20% 20% 20% 20% 20%;
   border-radius: 5%;
   padding: 0.6vw;
+  position: relative;
 }
 
 .blueTurn {
@@ -381,7 +385,7 @@ html {
 }
 
 #toggle-game-button{
-  margin-top: -8%;
+  /* margin-top: -8%; */
   position: relative;
   top: 100%;
   border-style: none;
@@ -391,10 +395,11 @@ html {
   font-family: "Bungee";
   font-size: 1.5vw;
   border-style: none;
-  border-radius: 12px;
+  border-radius: 0.8rem;
   outline: none;
   background-color: rgb(58, 54, 54);
   color: rgba(255, 248, 220, 0.733);
+  cursor: pointer;
 }
 
 #toggle-game-button:hover{
