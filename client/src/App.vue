@@ -1,8 +1,29 @@
 <template>
   <div id="app">
     <button id="toggle-game-button" v-on:click="toggleGameState">{{ gameStateText }}</button>
-    <menu-button id="menu" :teamAssigned1="teamAssigned1" :teamAssigned2="teamAssigned2" :gameOn="gameOn" :blueWins="blueWins" :redWins="redWins" :round="round" :redScore="redScore" :blueScore="blueScore" :assassinClicked="assassinClicked"></menu-button>
+    <menu-button id="menu" 
+      :teamAssigned1="teamAssigned1" 
+      :teamAssigned2="teamAssigned2" 
+      :gameOn="gameOn" :blueWins="blueWins" 
+      :redWins="redWins" :round="round" 
+      :redScore="redScore" 
+      :blueScore="blueScore" 
+      :assassinClicked="assassinClicked"
+      :captain1='captainAssigned1'
+      :captain2='captainAssigned2'
+      :preGame='preGame'
+      ></menu-button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></score-bar>
+    <div id='pre-game' v-if="preGame">
+      <label for='team1'>Pick team 1 name &nbsp;</label>
+      <input v-model='teamAssigned1' aria-label="Team 1 name input" id='team1' type='text' />
+      <label for='team2'>Pick team 2 name &nbsp;</label>
+      <input v-model='teamAssigned2' aria-label="Team 2 name input" id='team2' type='text' />
+      <label for='team1-captain'>Pick team 1 Codebreaker &nbsp;</label>
+      <input v-model='captainAssigned1' aria-label="Team 1 captain input" id='team1-captain' type='text' />
+      <label for='team2-captain'>Pick team 2 Codebreaker</label>
+      <input v-model='captainAssigned2' aria-label="Team 2 captain input" id='team2-captain' type='text' />
+    </div>
     <grid class="grid" v-bind:class="{blueTurn:(turn === 'Blue')}" :cards="cards" :gameOn="gameOn"></grid>
     <result-display :team="team" :wonGame="wonGame"></result-display>
     <user id="user-bar" :cards="cards" :gameOn="gameOn"></user>
@@ -32,6 +53,7 @@ export default {
   },
   data() {
     return {
+      preGame: false, 
       gameOn: false,
       cards: [],
       words: [],
@@ -47,7 +69,9 @@ export default {
       redWins: 0,
       blueWins: 0,
       teamAssigned1: "",
-      teamAssigned2: ""
+      teamAssigned2: "",
+      captainAssigned1: "",
+      captainAssigned2: ""
     }
   },
 
@@ -96,7 +120,13 @@ export default {
   },
   computed: {
     gameStateText() {
-      return this.gameOn ? 'End turn' : 'Start game'
+     if(this.preGame) {
+       return 'Ready?'
+     } else if ( this.gameOn ){
+       return 'End Turn'
+     } else {
+       return 'Start Game'
+     }
     },
     
   },
@@ -112,6 +142,9 @@ export default {
           this.teamAssigned2 = "Team 1 - "
         }
     },
+    // setTeam1Name() {
+    //   teamAssigned1 = 
+    // },
     clickCardHelper(){
         this.saveNewMove();
         this.saveNewGameStatus();
@@ -265,7 +298,20 @@ export default {
     },
 
     toggleGameState (){
-      return this.gameOn ? this.nextTurn() : this.startGame()
+
+      if( this.gameOn ){
+        this.nextTurn()
+      } else if( this.preGame ){
+        this.startGame()
+        this.preGame = false
+      } else {
+        this.preGameStart()
+      }
+      // return this.gameOn ? this.nextTurn() : this.preGameStart()
+    },
+
+    preGameStart() {
+      this.preGame = true;
     },
 
     startGame() {
@@ -361,7 +407,41 @@ html {
   grid-template-rows: 2rem 7rem 70% 1fr;
   height: 100vh;
 }
-
+#pre-game {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  grid-column: 2/5;
+  padding: 3rem;
+  font-family: 'Bungee' ;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.411);
+  backdrop-filter: blur(1px);
+  box-shadow: 0 0 2rem 1rem rgba(0, 0, 0, 0.397);
+}
+#pre-game input, label {
+  width: 30vw;
+  margin: 0 auto;
+  padding: 0.25rem;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  margin-bottom: 0.3rem;
+}
+#pre-game label {
+  color: rgb(224, 224, 224);
+}
+#pre-game input {
+  background-color: rgba(255, 255, 255, 0.651);
+  font-family: inherit;
+  color: rgb(206, 96, 6);
+}
+#pre-game input:not(:last-child) {
+  margin-bottom: 1rem;
+}
 .grid {
   transition: 0.7s;
   box-shadow: -5px 7px 62px 16px rgb(211, 29, 29),

@@ -1,20 +1,25 @@
 <template>
 
   <nav role="navigation">
-      <div id="menuToggle">
+      <div v-if="!preGame" id="menuToggle">
           <input type="checkbox"/>
           <span></span>
           <span></span>
           <span></span>
         <ul id="menu">
-            <li v-if="!gameOn && !teamAssigned1" @click="teamAssigner">Team Assigner</li>
+            <!-- <li v-if="!gameOn && !teamAssigned1" @click="teamAssigner">Team Assigner</li> -->
             <li @click="startGame">Start New Game</li>
             <li v-if="gameOn" @click="endGame">End Current Game</li>
             <li v-if="!gameOn && !assassinClicked" @click="resumeGame">Resume Game</li>
             <a href="https://drive.google.com/file/d/1zjeiIJAANL_MXi7rqyp3CIOMCvqUtO-v/view?usp=sharing" target="_blank"><li>Show Rules</li></a>
-            <li class='round'>ROUND  {{round}}</li>
-            <li class='red-wins'>{{teamAssigned1}} RED  {{redWins}}</li>   
-            <li class='blue-wins'>{{teamAssigned2}} BLUE  {{blueWins}}</li>
+            <li class='round'>ROUND {{round}}</li>
+            <li v-if="teamAssigned1" class='red-wins'>{{teamAssigned1}} - {{redWins}}</li>   
+            <li v-if="teamAssigned2" class='blue-wins'>{{teamAssigned2}} - {{blueWins}}</li>
+            <div v-if="teamAssigned1 || teamAssigned2">
+              <li class='captains'>CODEBREAKERS</li>
+              <li class='red-captain'> {{captain1}} </li>
+              <li class='blue-captain'> {{captain2}}</li>
+            </div>
         </ul>
      </div>
   </nav>
@@ -27,7 +32,20 @@ import App from '../App'
 
 export default {
 name: 'menu-button',
-props: ['gameOn', 'redWins', 'blueWins', 'round', 'redScore', 'blueScore', 'assassinClicked', 'teamAssigned1', 'teamAssigned2'],
+props: [
+  'gameOn', 
+  'redWins', 
+  'blueWins', 
+  'round', 
+  'redScore', 
+  'blueScore', 
+  'assassinClicked', 
+  'teamAssigned1', 
+  'teamAssigned2',
+  'captain1',
+  'captain2',
+  'preGame'
+   ],
 methods: {
   teamAssigner(){
     this.$parent.teamAssigner();  
@@ -164,6 +182,7 @@ a {
   border: 2px solid rgb(60, 60, 60);
   color: white;
   text-align: left;
+  margin-top: 4rem;
 }
 
 .red-wins {
@@ -176,5 +195,18 @@ a {
   background: linear-gradient(135deg, rgba(55, 154, 211, 0.836), rgb(20, 117, 134));
   border: 2px solid rgb(22, 94, 107);
   color: white;
+}
+.captains {
+  margin-top: 4rem;
+  background: linear-gradient(135deg, rgba(60, 60, 60, 0.836), rgb(0, 0, 0));
+  border: 2px solid rgb(60, 60, 60);
+  color: white;
+  text-align: left;
+}
+.red-captain {
+  color: rgb(177, 8, 8);
+}
+.blue-captain {
+  color: rgb(20, 117, 134);
 }
 </style>
